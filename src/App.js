@@ -100,15 +100,22 @@ class App extends React.Component {
         {this.state.isLoading ? (
           <Loader />
         ) : (
-          <>
+           <>
+            <div className="container">
+              <ModeSelector onSelect={this.modeSelectHandler} />
+            </div>
             <TableSearch onSearch={this.searchHadnler} />
-            <Table
-              data={displayData}
-              onSort={this.onSort}
-              sort={this.state.sort}
-              sortField={this.state.sortField}
-              onRowSelect={this.onRowSelect}
-            />
+            {displayData ? (
+              <Table
+                data={displayData}
+                onSort={this.onSort}
+                sort={this.state.sort}
+                sortField={this.state.sortField}
+                onRowSelect={this.onRowSelect}
+              />
+            ) : (
+              <span>Ничего не найдено</span>
+            )}
           </>
         )}
 
